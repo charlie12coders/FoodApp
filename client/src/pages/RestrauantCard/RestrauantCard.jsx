@@ -5,13 +5,14 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 const RestrauantCard = ({ item, index }) => {
   const navigate = useNavigate();
+  const navaigateData = () => {
+    navigate(`/restaurant/${item.city}/${item.name}/${index}`);
+    localStorage.setItem("itemData", JSON.stringify(item));
+    localStorage.setItem("index", index);
+  };
   return (
     <Card className="m-5 w-[18rem] productcard">
-      <div
-        onClick={() =>
-          navigate(`/restaurant/${item.city}/${item.name}/${index}`)
-        }
-      >
+      <div onClick={navaigateData}>
         <img
           className="w-full h-[10rem] rounded-t-md object-cover"
           src={item.imageUrl}
