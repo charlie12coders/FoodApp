@@ -3,34 +3,32 @@ import React from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-const RestrauantCard = ({ item, index }) => {
+const RestrauantCard = ({ Carditem, id }) => {
   const navigate = useNavigate();
   const navaigateData = () => {
-    navigate(`/restaurant/${item.city}/${item.name}/${index}`);
-    localStorage.setItem("itemData", JSON.stringify(item));
-    localStorage.setItem("index", index);
+    navigate(`/restaurant/${Carditem.city}/${Carditem.name}/${id}`);
+    localStorage.setItem("itemData", JSON.stringify(Carditem));
   };
   return (
     <Card className="m-5 w-[18rem] productcard">
       <div onClick={navaigateData}>
         <img
           className="w-full h-[10rem] rounded-t-md object-cover"
-          src={item.imageUrl}
-          alt=""
+          src={Carditem.imageUrl}
         />
       </div>
       <div className="p-4 textpart lg:flex w-full justify-between">
         <div className="space-y-1">
-          <p className="font-semibold text-lg">{item.name}</p>
+          <p className="font-semibold text-lg">{Carditem.name}</p>
           <p className="text-gray-500 text-sm">
-            {item.description.length > 40
-              ? item.description.substring(0, 40) + "..."
-              : item.description}
+            {Carditem.description.length > 40
+              ? Carditem.description.substring(0, 40) + "..."
+              : Carditem.description}
           </p>
         </div>
         <div>
           <IconButton>
-            {index % 2 == 0 ? (
+            {id % 2 === 0 ? (
               <FavoriteIcon color="primary" />
             ) : (
               <FavoriteBorderIcon />

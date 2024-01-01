@@ -22,7 +22,7 @@ const categories = [
 const foodType = ["Vegetarian Only", "Non - Vegetarian Only", "Both"];
 
 const Restaurant = () => {
-  const [SelectedCategory] = useState("");
+  const [SelectedCategory] = useState(0);
   const item = JSON.parse(localStorage.getItem("itemData"));
   const MenuItem = MenuCardData.map((item) => item);
   const handleCateogryChange = () => {};
